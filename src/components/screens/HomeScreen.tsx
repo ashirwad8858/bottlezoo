@@ -17,12 +17,21 @@ import Header from '../reuse/Header';
 import ItemDescriptionCard from '../reuse/ItemDescriptionCard';
 import TextFieldComp from '../reuse/TextFieldComp';
 import Icon from 'react-native-vector-icons/Zocial';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { AuthParamList } from '../../models/navigation-params';
+import { useNavigation } from '@react-navigation/native';
 
 // Home Screen for the App
 const HomeScreen = () => {
+  type NavigationProp = StackNavigationProp<AuthParamList, 'HomeScreen'>;
+  const navigation = useNavigation<NavigationProp>();
+
+  const navigateToAuth = () => {
+    navigation.navigate('Signin');
+  };
   return (
     <Container>
-      <Header />
+      <Header home={true} navigate={navigateToAuth} />
       <ScrollView>
         <ImageBackground
           source={require('../../assets/home-bg.jpeg')}

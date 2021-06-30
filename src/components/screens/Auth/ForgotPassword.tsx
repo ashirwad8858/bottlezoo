@@ -1,6 +1,6 @@
-// Sign up Screen for the application
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+// Forgot Password Screen for the application
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 import { moderateScale } from 'react-native-size-matters';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Config from '../../../utils/Config';

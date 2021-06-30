@@ -1,4 +1,4 @@
-// Sign up Screen for the application
+// Sign in Screen for the application
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { moderateScale } from 'react-native-size-matters';
@@ -9,10 +9,22 @@ import AppButton from '../../reuse/AppButton';
 import Container from '../../reuse/Container';
 import FloatingTextInput from '../../reuse/FloatingTextInput';
 import CheckBox from '@react-native-community/checkbox';
+import Header from '../../reuse/Header';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { AuthParamList } from '../../../models/navigation-params';
+import { useNavigation } from '@react-navigation/native';
+
 const Signin = () => {
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
+  type NavigationProp = StackNavigationProp<AuthParamList, 'Signin'>;
+  const navigation = useNavigation<NavigationProp>();
+
+  const navigateBack = () => {
+    navigation.goBack();
+  };
   return (
     <Container>
+      <Header navigateBack={navigateBack} />
       <View style={styles.container}>
         <View style={styles.iconBackground}>
           <Icon name="lock-outline" size={30} color={Config.colors.WHITE} />
