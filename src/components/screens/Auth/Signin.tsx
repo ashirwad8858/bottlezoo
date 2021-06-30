@@ -22,6 +22,14 @@ const Signin = () => {
   const navigateBack = () => {
     navigation.goBack();
   };
+
+  const navigateToSignup = () => {
+    navigation.navigate('Signup');
+  };
+
+  const navigateToForgotPassword = () => {
+    navigation.navigate('ForgotPassword');
+  };
   return (
     <Container>
       <Header navigateBack={navigateBack} />
@@ -59,10 +67,12 @@ const Signin = () => {
             />
           </View>
           <View style={styles.textContainer}>
-            <TouchableOpacity activeOpacity={0.5}>
+            <TouchableOpacity
+              activeOpacity={0.5}
+              onPress={navigateToForgotPassword}>
               <Text style={styles.link}>{Config.constants.forgotPassword}</Text>
             </TouchableOpacity>
-            <TouchableOpacity activeOpacity={0.5}>
+            <TouchableOpacity activeOpacity={0.5} onPress={navigateToSignup}>
               <Text style={styles.link}>{Config.constants.noAccount}</Text>
             </TouchableOpacity>
           </View>

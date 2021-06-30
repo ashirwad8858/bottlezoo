@@ -1,17 +1,29 @@
 // Forgot Password Screen for the application
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { moderateScale } from 'react-native-size-matters';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { AuthParamList } from '../../../models/navigation-params';
 import Config from '../../../utils/Config';
 import { windowWidth } from '../../../utils/Dimensions';
 import AppButton from '../../reuse/AppButton';
 import Container from '../../reuse/Container';
 import FloatingTextInput from '../../reuse/FloatingTextInput';
+import Header from '../../reuse/Header';
 
 const ForgotPassword = () => {
+  type NavigationProp = StackNavigationProp<AuthParamList, 'ForgotPassword'>;
+  const navigation = useNavigation<NavigationProp>();
+
+  const navigateBack = () => {
+    navigation.goBack();
+  };
+
   return (
     <Container>
+      <Header navigateBack={navigateBack} />
       <View style={styles.container}>
         <View style={styles.iconBackground}>
           <Icon name="lock-outline" size={30} color={Config.colors.WHITE} />

@@ -9,10 +9,27 @@ import AppButton from '../../reuse/AppButton';
 import Container from '../../reuse/Container';
 import FloatingTextInput from '../../reuse/FloatingTextInput';
 import CheckBox from '@react-native-community/checkbox';
+import Header from '../../reuse/Header';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { AuthParamList } from '../../../models/navigation-params';
+import { useNavigation } from '@react-navigation/native';
 const Signup = () => {
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
+
+  type NavigationProp = StackNavigationProp<AuthParamList, 'Signup'>;
+  const navigation = useNavigation<NavigationProp>();
+
+  const navigateBack = () => {
+    navigation.goBack();
+  };
+
+  const navigateToSignin = () => {
+    navigation.navigate('Signin');
+  };
+
   return (
     <Container>
+      <Header navigateBack={navigateBack} />
       <View style={styles.container}>
         <View style={styles.iconBackground}>
           <Icon name="lock-outline" size={30} color={Config.colors.WHITE} />
@@ -48,7 +65,7 @@ const Signup = () => {
             />
           </View>
 
-          <TouchableOpacity activeOpacity={0.5}>
+          <TouchableOpacity activeOpacity={0.5} onPress={navigateToSignin}>
             <Text style={styles.link}>
               {Config.constants.alreadyHaveAccount}
             </Text>
